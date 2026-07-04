@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#000000">
+
+    <!-- Status bar space -->
+    <View android:layout_width="match_parent" android:layout_height="24dp"/>
+
+    <!-- Header -->
+    <LinearLayout android:id="@+id/header_row"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingHorizontal="24dp"
+        android:paddingTop="8dp" android:gravity="center_vertical">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="horizontal" android:gravity="center_vertical">
+            <com.yvl.app.view.VinylLogoView
+                android:id="@+id/mini_vinyl"
+                android:layout_width="36dp" android:layout_height="36dp"/>
+            <TextView android:id="@+id/yvl_title"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="YVL"
+                android:textColor="#FFFFFF" android:textSize="48sp"
+                android:fontFamily="sans-serif-black" android:textStyle="bold"
+                android:letterSpacing="-0.04" android:layout_marginStart="10dp"/>
+        </LinearLayout>
+        <ImageView android:id="@+id/account_btn"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@drawable/ic_person" android:tint="#FFFFFF"
+            android:padding="6dp"
+            android:background="@drawable/bg_circle_surface"/>
+    </LinearLayout>
+
+    <!-- Mood chips -->
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:scrollbars="none" android:layout_marginTop="16dp">
+        <LinearLayout android:id="@+id/chips_row"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:paddingHorizontal="24dp"
+            android:paddingVertical="4dp"/>
+    </HorizontalScrollView>
+
+    <!-- Section header -->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Recently Played"
+        android:textColor="#555555" android:textSize="11sp"
+        android:textStyle="bold" android:letterSpacing="0.12"
+        android:paddingHorizontal="24dp" android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif"/>
+
+    <!-- Songs list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/songs_rv"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="16dp"/>
+</LinearLayout>

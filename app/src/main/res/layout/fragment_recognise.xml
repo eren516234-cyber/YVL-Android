@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#000000">
+
+    <View android:layout_width="match_parent" android:layout_height="24dp"/>
+
+    <!-- Header -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:paddingHorizontal="24dp" android:paddingTop="8dp">
+        <TextView android:id="@+id/recognise_title"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Recognise" android:textColor="#FFFFFF" android:textSize="48sp"
+            android:fontFamily="sans-serif-black" android:textStyle="bold"
+            android:letterSpacing="-0.04"/>
+        <TextView android:id="@+id/status_text"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Tap to identify what's playing"
+            android:textColor="#555555" android:textSize="14sp" android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- Orb area -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:gravity="center">
+
+        <!-- Pulse rings -->
+        <View android:id="@+id/ring3" android:layout_width="180dp" android:layout_height="180dp"
+            android:layout_gravity="center" android:background="@drawable/bg_ring"
+            android:visibility="gone"/>
+        <View android:id="@+id/ring2" android:layout_width="160dp" android:layout_height="160dp"
+            android:layout_gravity="center" android:background="@drawable/bg_ring"
+            android:visibility="gone"/>
+        <View android:id="@+id/ring1" android:layout_width="140dp" android:layout_height="140dp"
+            android:layout_gravity="center" android:background="@drawable/bg_ring"
+            android:visibility="gone"/>
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center" android:orientation="vertical" android:gravity="center">
+
+            <!-- Mic orb -->
+            <View android:id="@+id/orb_btn"
+                android:layout_width="140dp" android:layout_height="140dp"
+                android:background="@drawable/bg_orb"/>
+
+            <!-- Waveform (listening state) -->
+            <com.yvl.app.view.WaveformView
+                android:id="@+id/waveform"
+                android:layout_width="180dp" android:layout_height="36dp"
+                android:layout_marginTop="24dp" android:visibility="gone"/>
+
+            <!-- Result card -->
+            <LinearLayout android:id="@+id/result_card"
+                android:layout_width="280dp" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/bg_card"
+                android:padding="20dp" android:layout_marginTop="24dp"
+                android:gravity="center" android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="MATCH FOUND" android:textColor="#555555"
+                    android:textSize="10sp" android:textStyle="bold" android:letterSpacing="0.15"
+                    android:layout_marginBottom="8dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Blinding Lights" android:textColor="#FFFFFF"
+                    android:textSize="26sp" android:fontFamily="sans-serif-black" android:textStyle="bold"
+                    android:letterSpacing="-0.02"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="The Weeknd" android:textColor="#555555"
+                    android:textSize="14sp" android:layout_marginTop="4dp"/>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="16dp">
+                    <Button android:id="@+id/play_now_btn"
+                        android:layout_width="wrap_content" android:layout_height="40dp"
+                        android:text="Play Now" android:textColor="#000000" android:textStyle="bold"
+                        android:backgroundTint="#FFFFFF" android:stateListAnimator="@null"
+                        android:paddingHorizontal="20dp" android:textSize="13sp"
+                        android:layout_marginEnd="8dp"/>
+                    <Button android:layout_width="wrap_content" android:layout_height="40dp"
+                        android:text="Save" android:textColor="#FFFFFF"
+                        android:backgroundTint="#111111" android:stateListAnimator="@null"
+                        android:paddingHorizontal="20dp" android:textSize="13sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- History -->
+    <LinearLayout android:id="@+id/history_section"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:paddingHorizontal="24dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="History" android:textColor="#555555" android:textSize="18sp"
+            android:textStyle="bold" android:letterSpacing="-0.02"
+            android:layout_marginBottom="14dp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+            <View android:layout_width="44dp" android:layout_height="44dp"
+                android:background="@drawable/bg_circle_surface"/>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Flowers" android:textColor="#FFFFFF" android:textSize="15sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Miley Cyrus · 2h ago" android:textColor="#555555" android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+            <View android:layout_width="44dp" android:layout_height="44dp"
+                android:background="@drawable/bg_circle_surface"/>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Anti-Hero" android:textColor="#FFFFFF" android:textSize="15sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Taylor Swift · Yesterday" android:textColor="#555555" android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View android:layout_width="match_parent" android:layout_height="80dp"/>
+    </LinearLayout>
+</LinearLayout>

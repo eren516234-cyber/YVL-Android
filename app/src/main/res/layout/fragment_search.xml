@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#000000">
+
+    <View android:layout_width="match_parent" android:layout_height="24dp"/>
+
+    <LinearLayout android:id="@+id/search_header"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:paddingHorizontal="24dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Search" android:textColor="#FFFFFF" android:textSize="48sp"
+            android:fontFamily="sans-serif-black" android:textStyle="bold"
+            android:letterSpacing="-0.04"/>
+        <EditText android:id="@+id/search_input"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:hint="Artists, songs, podcasts"
+            android:textColorHint="#555555"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:background="@drawable/bg_search_bar"
+            android:paddingHorizontal="16dp"
+            android:layout_marginTop="14dp"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="10dp"
+            android:drawableTint="#555555"
+            android:imeOptions="actionSearch"
+            android:inputType="text"/>
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:scrollbars="none">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- History pills -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="RECENT" android:textColor="#555555" android:textSize="11sp"
+                android:textStyle="bold" android:letterSpacing="0.15"
+                android:paddingHorizontal="24dp" android:layout_marginTop="20dp"/>
+            <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:scrollbars="none" android:layout_marginTop="10dp">
+                <LinearLayout android:id="@+id/history_row"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:paddingHorizontal="24dp"/>
+            </HorizontalScrollView>
+
+            <!-- Categories -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="BROWSE CATEGORIES" android:textColor="#555555" android:textSize="11sp"
+                android:textStyle="bold" android:letterSpacing="0.15"
+                android:paddingHorizontal="24dp" android:layout_marginTop="24dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories_rv"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp" android:paddingTop="10dp"
+                android:nestedScrollingEnabled="false"/>
+
+            <!-- Trending -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="TRENDING" android:textColor="#555555" android:textSize="11sp"
+                android:textStyle="bold" android:letterSpacing="0.15"
+                android:paddingHorizontal="24dp" android:layout_marginTop="20dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/trending_rv"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp" android:paddingTop="6dp"
+                android:nestedScrollingEnabled="false"/>
+
+            <View android:layout_width="match_parent" android:layout_height="80dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

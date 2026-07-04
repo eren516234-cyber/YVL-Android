@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:scrollbars="none" android:background="#000000">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:paddingHorizontal="24dp">
+
+        <View android:layout_width="match_parent" android:layout_height="32dp"/>
+
+        <TextView android:id="@+id/settings_title"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Settings" android:textColor="#FFFFFF" android:textSize="42sp"
+            android:fontFamily="sans-serif-black" android:textStyle="bold"
+            android:letterSpacing="-0.03" android:layout_marginBottom="24dp"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="THEME" android:textColor="#555555" android:textSize="11sp"
+            android:textStyle="bold" android:letterSpacing="0.15"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Rainbow Mode card -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_card"
+            android:padding="16dp" android:layout_marginBottom="12dp">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🌈 Rainbow Mode" android:textColor="#FFFFFF"
+                        android:textSize="15sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Change the whole app colour"
+                        android:textColor="#555555" android:textSize="11sp"/>
+                </LinearLayout>
+                <!-- Toggle -->
+                <FrameLayout android:id="@+id/rainbow_toggle"
+                    android:layout_width="48dp" android:layout_height="26dp"
+                    android:background="@drawable/bg_toggle" android:backgroundTint="#222222">
+                    <View android:id="@+id/toggle_thumb"
+                        android:layout_width="20dp" android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/bg_toggle_thumb"
+                        android:elevation="4dp"/>
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Color swatches (shown when rainbow active) -->
+            <LinearLayout android:id="@+id/swatches_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:layout_marginTop="16dp"
+                android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Pick a colour" android:textColor="#555555"
+                    android:textSize="11sp" android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+                <HorizontalScrollView android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:scrollbars="none">
+                    <LinearLayout android:id="@+id/swatches_row"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal"/>
+                </HorizontalScrollView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Reset btn -->
+        <FrameLayout android:id="@+id/reset_btn"
+            android:layout_width="match_parent" android:layout_height="44dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="24dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Reset to Black &amp; White"
+                android:textColor="#555555" android:textSize="13sp" android:textStyle="bold"/>
+        </FrameLayout>
+
+        <!-- About -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:gravity="center" android:paddingVertical="24dp"
+            android:layout_marginBottom="80dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="YVL" android:textColor="#FFFFFF" android:textSize="28sp"
+                android:fontFamily="sans-serif-black" android:textStyle="bold"
+                android:letterSpacing="-0.04"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="v3.2.1 · Made by Shourya"
+                android:textColor="#555555" android:textSize="11sp" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

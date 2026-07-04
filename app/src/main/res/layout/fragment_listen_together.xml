@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#000000">
+
+    <View android:layout_width="match_parent" android:layout_height="24dp"/>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:scrollbars="none">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:paddingHorizontal="24dp">
+
+            <TextView android:id="@+id/header_listen"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Listen" android:textColor="#FFFFFF" android:textSize="48sp"
+                android:fontFamily="sans-serif-black" android:textStyle="bold"
+                android:letterSpacing="-0.04" android:lineSpacingMultiplier="0.95"
+                android:layout_marginTop="8dp"/>
+            <TextView android:id="@+id/header_together"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Together" android:textColor="#555555" android:textSize="48sp"
+                android:fontFamily="sans-serif-black" android:textStyle="bold"
+                android:letterSpacing="-0.04" android:lineSpacingMultiplier="0.95"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Session card -->
+            <LinearLayout android:id="@+id/session_card"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="20dp" android:layout_marginBottom="16dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+                    <View android:layout_width="8dp" android:layout_height="8dp"
+                        android:background="@drawable/bg_dot_white" android:layout_marginEnd="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="ACTIVE SESSION" android:textColor="#555555"
+                        android:textSize="10sp" android:textStyle="bold" android:letterSpacing="0.15"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+                    <View android:layout_width="52dp" android:layout_height="52dp"
+                        android:background="@drawable/bg_vinyl_mini"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical"
+                        android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Blinding Lights"
+                            android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="The Weeknd · 3 listening"
+                            android:textColor="#555555" android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Waveform -->
+                <com.yvl.app.view.WaveformView
+                    android:id="@+id/waveform"
+                    android:layout_width="match_parent" android:layout_height="24dp"
+                    android:layout_marginBottom="14dp"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/join_btn"
+                        android:layout_width="0dp" android:layout_height="44dp"
+                        android:layout_weight="1" android:text="Join Session"
+                        android:textColor="#000000" android:textStyle="bold"
+                        android:textSize="14sp" android:backgroundTint="#FFFFFF"
+                        android:stateListAnimator="@null"
+                        android:layout_marginEnd="8dp"/>
+                    <Button android:layout_width="0dp" android:layout_height="44dp"
+                        android:layout_weight="1" android:text="View"
+                        android:textColor="#FFFFFF" android:textSize="14sp"
+                        android:backgroundTint="#1A1A1A"
+                        android:stateListAnimator="@null"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Start new session -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:background="@drawable/bg_card_dark"
+                android:padding="14dp" android:layout_marginBottom="20dp">
+                <View android:layout_width="40dp" android:layout_height="40dp"
+                    android:background="@drawable/bg_circle_surface"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Start a session" android:textColor="#FFFFFF"
+                        android:textSize="15sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Share music with friends"
+                        android:textColor="#555555" android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Friends -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="FRIENDS" android:textColor="#555555" android:textSize="11sp"
+                android:textStyle="bold" android:letterSpacing="0.15"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout android:id="@+id/friends_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/item_friend" android:tag="Alex"/>
+                <include layout="@layout/item_friend" android:tag="Sam"/>
+                <include layout="@layout/item_friend" android:tag="Jordan"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="80dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

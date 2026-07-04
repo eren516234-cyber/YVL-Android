@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#000000">
+    <com.yvl.app.view.MusicGlobeView
+        android:id="@+id/globe_preview"
+        android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Music Globe" android:textColor="#FFFFFF" android:textSize="28sp"
+        android:fontFamily="sans-serif-black" android:textStyle="bold"
+        android:layout_margin="24dp"/>
+</FrameLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#000000">
+
+    <LinearLayout android:id="@+id/content_panel"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Status/Back row -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
+            android:orientation="horizontal" android:paddingStart="16dp" android:paddingEnd="16dp"
+            android:gravity="center_vertical">
+            <ImageView android:id="@+id/btn_back"
+                android:layout_width="40dp" android:layout_height="40dp"
+                android:src="@drawable/ic_back"
+                android:tint="#FFFFFF"
+                android:padding="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+            <ImageView android:id="@+id/btn_more"
+                android:layout_width="40dp" android:layout_height="40dp"
+                android:src="@drawable/ic_more"
+                android:tint="#FFFFFF" android:padding="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+
+        <!-- Vinyl View (takes most space) -->
+        <com.yvl.app.view.VinylView
+            android:id="@+id/vinyl_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"/>
+
+        <!-- Song info -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:paddingHorizontal="24dp"
+            android:paddingTop="12dp" android:gravity="center_vertical">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:id="@+id/song_title_player"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Blinding Lights"
+                    android:textColor="#FFFFFF" android:textSize="26sp"
+                    android:fontFamily="sans-serif-black" android:textStyle="bold"
+                    android:letterSpacing="-0.02"/>
+                <TextView android:id="@+id/song_artist_player"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="The Weeknd"
+                    android:textColor="#555555" android:textSize="16sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+            <ImageView android:id="@+id/btn_like"
+                android:layout_width="44dp" android:layout_height="44dp"
+                android:src="@drawable/ic_heart"
+                android:tint="#FFFFFF" android:padding="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+
+        <!-- EQ Bars -->
+        <com.yvl.app.view.EqBarsView
+            android:id="@+id/eq_bars"
+            android:layout_width="match_parent" android:layout_height="28dp"
+            android:layout_marginHorizontal="24dp" android:layout_marginTop="10dp"/>
+
+        <!-- Progress -->
+        <SeekBar android:id="@+id/seek_bar"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp" android:layout_marginTop="8dp"
+            android:thumb="@drawable/thumb_seekbar"
+            android:progressTint="#FFFFFF"
+            android:progressBackgroundTint="#222222"
+            style="@style/Widget.AppCompat.SeekBar"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:paddingHorizontal="24dp">
+            <TextView android:id="@+id/time_current"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="1:36" android:textColor="#555555" android:textSize="12sp"/>
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+            <TextView android:id="@+id/time_total"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="3:40" android:textColor="#555555" android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- Controls -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="72dp"
+            android:orientation="horizontal" android:gravity="center"
+            android:paddingHorizontal="24dp" android:layout_marginTop="8dp">
+            <ImageView android:id="@+id/btn_shuffle"
+                android:layout_width="44dp" android:layout_height="44dp"
+                android:src="@drawable/ic_shuffle" android:tint="#555555"
+                android:padding="8dp" android:background="?attr/selectableItemBackgroundBorderless"/>
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+            <ImageView android:id="@+id/btn_prev"
+                android:layout_width="56dp" android:layout_height="56dp"
+                android:src="@drawable/ic_prev" android:tint="#FFFFFF"
+                android:padding="10dp" android:background="?attr/selectableItemBackgroundBorderless"/>
+            <ImageView android:id="@+id/btn_play_pause"
+                android:layout_width="70dp" android:layout_height="70dp"
+                android:src="@drawable/ic_pause"
+                android:background="@drawable/bg_play_btn"
+                android:tint="#000000" android:padding="16dp"
+                android:layout_marginHorizontal="16dp"/>
+            <ImageView android:id="@+id/btn_next"
+                android:layout_width="56dp" android:layout_height="56dp"
+                android:src="@drawable/ic_next" android:tint="#FFFFFF"
+                android:padding="10dp" android:background="?attr/selectableItemBackgroundBorderless"/>
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+            <ImageView android:id="@+id/btn_repeat"
+                android:layout_width="44dp" android:layout_height="44dp"
+                android:src="@drawable/ic_repeat" android:tint="#555555"
+                android:padding="8dp" android:background="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+
+        <!-- Share row -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center"
+            android:paddingBottom="32dp" android:layout_marginTop="4dp">
+            <ImageView android:id="@+id/btn_share"
+                android:layout_width="36dp" android:layout_height="36dp"
+                android:src="@drawable/ic_share" android:tint="#555555"
+                android:padding="6dp" android:background="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
