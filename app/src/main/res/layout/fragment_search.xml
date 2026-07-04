@@ -3,71 +3,61 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical" android:background="#000000">
 
-    <View android:layout_width="match_parent" android:layout_height="24dp"/>
+    <View android:layout_width="match_parent" android:layout_height="20dp"/>
 
     <LinearLayout android:id="@+id/search_header"
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:paddingHorizontal="24dp">
+        android:orientation="vertical" android:paddingHorizontal="20dp">
+
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Search" android:textColor="#FFFFFF" android:textSize="48sp"
+            android:text="Search" android:textColor="#FFFFFF" android:textSize="36sp"
             android:fontFamily="sans-serif-black" android:textStyle="bold"
-            android:letterSpacing="-0.04"/>
-        <EditText android:id="@+id/search_input"
-            android:layout_width="match_parent" android:layout_height="52dp"
-            android:hint="Artists, songs, podcasts"
-            android:textColorHint="#555555"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:background="@drawable/bg_search_bar"
-            android:paddingHorizontal="16dp"
-            android:layout_marginTop="14dp"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="10dp"
-            android:drawableTint="#555555"
-            android:imeOptions="actionSearch"
-            android:inputType="text"/>
+            android:letterSpacing="-0.03" android:layout_marginBottom="16dp"/>
+
+        <!-- Search bar -->
+        <FrameLayout android:layout_width="match_parent" android:layout_height="50dp"
+            android:background="@drawable/bg_search_bar" android:layout_marginBottom="16dp">
+            <EditText android:id="@+id/search_input"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:hint="Songs, artists, albums..."
+                android:textColorHint="#555555" android:textColor="#FFFFFF"
+                android:textSize="15sp" android:paddingHorizontal="20dp"
+                android:background="@null" android:imeOptions="actionSearch"
+                android:inputType="text" android:singleLine="true"
+                android:maxLines="1"/>
+        </FrameLayout>
+
+        <!-- History pills -->
+        <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:scrollbars="none" android:layout_marginBottom="20dp">
+            <LinearLayout android:id="@+id/history_row"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingVertical="4dp"/>
+        </HorizontalScrollView>
     </LinearLayout>
 
-    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
-        android:layout_weight="1" android:scrollbars="none">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <!-- Categories -->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="BROWSE CATEGORIES" android:textColor="#555555"
+        android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.12"
+        android:paddingHorizontal="20dp" android:layout_marginBottom="10dp"/>
 
-            <!-- History pills -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="RECENT" android:textColor="#555555" android:textSize="11sp"
-                android:textStyle="bold" android:letterSpacing="0.15"
-                android:paddingHorizontal="24dp" android:layout_marginTop="20dp"/>
-            <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:scrollbars="none" android:layout_marginTop="10dp">
-                <LinearLayout android:id="@+id/history_row"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:paddingHorizontal="24dp"/>
-            </HorizontalScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categories_rv"
+        android:layout_width="match_parent" android:layout_height="200dp"
+        android:paddingHorizontal="16dp" android:clipToPadding="false"/>
 
-            <!-- Categories -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="BROWSE CATEGORIES" android:textColor="#555555" android:textSize="11sp"
-                android:textStyle="bold" android:letterSpacing="0.15"
-                android:paddingHorizontal="24dp" android:layout_marginTop="24dp"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categories_rv"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:paddingHorizontal="16dp" android:paddingTop="10dp"
-                android:nestedScrollingEnabled="false"/>
+    <!-- Results -->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="TRENDING" android:textColor="#555555"
+        android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.12"
+        android:paddingHorizontal="20dp" android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"/>
 
-            <!-- Trending -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="TRENDING" android:textColor="#555555" android:textSize="11sp"
-                android:textStyle="bold" android:letterSpacing="0.15"
-                android:paddingHorizontal="24dp" android:layout_marginTop="20dp"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/trending_rv"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:paddingHorizontal="12dp" android:paddingTop="6dp"
-                android:nestedScrollingEnabled="false"/>
-
-            <View android:layout_width="match_parent" android:layout_height="80dp"/>
-        </LinearLayout>
-    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trending_rv"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp" android:paddingBottom="80dp"
+        android:clipToPadding="false"/>
 </LinearLayout>

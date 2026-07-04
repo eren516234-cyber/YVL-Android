@@ -1,6 +1,5 @@
 package com.yvl.app;
 
-import android.graphics.Color;
 import android.os.*;
 import android.view.*;
 import android.widget.FrameLayout;
@@ -11,23 +10,17 @@ import com.yvl.app.fragment.*;
 import com.yvl.app.util.ThemeManager;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ThemeManager themeManager;
+    private ThemeManager tm;
     private BottomNavigationView bottomNav;
-    private Fragment currentFragment;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        themeManager = ThemeManager.getInstance(this);
+        tm = ThemeManager.getInstance(this);
         setContentView(R.layout.activity_main);
-
-        bottomNav = findViewById(R.id.bottom_nav);
         applyTheme();
 
-        if (savedInstanceState == null) {
-            switchFragment(new HomeFragment(), false);
-        }
+        bottomNav = findViewById(R.id.bottom_nav);
+        if (savedInstanceState == null) switchFragment(new HomeFragment(), false);
 
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -44,31 +37,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void switchFragment(Fragment f, boolean animate) {
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-        if (animate) {
-            tx.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        }
-        tx.replace(R.id.fragment_container, f);
-        tx.commit();
-        currentFragment = f;
+        if (animate) tx.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+        tx.replace(R.id.fragment_container, f).commit();
     }
 
     public void applyTheme() {
-        int bg   = themeManager.getBgColor();
-        int surf = themeManager.getSurfaceColor();
-        int txt  = themeManager.getTextColor();
+        int bg  = tm.getBgColor();
+        int txt = tm.getTextColor();
+        getWindow().setStatusBarColor(bg);
+        getWindow().setNavigationBarColor(bg);
         FrameLayout container = findViewById(R.id.fragment_container);
         if (container != null) container.setBackgroundColor(bg);
-        bottomNav.setBackgroundColor(bg);
-        bottomNav.setItemTextColor(android.content.res.ColorStateList.valueOf(txt));
-        bottomNav.setItemIconTintList(android.content.res.ColorStateList.valueOf(txt));
+        if (bottomNav == null) bottomNav = findViewById(R.id.bottom_nav);
+        if (bottomNav != null) {
+            bottomNav.setBackgroundColor(bg);
+            android.content.res.ColorStateList states = android.content.res.ColorStateList.valueOf(txt);
+            bottomNav.setItemTextColor(buildNavColorStateList(txt, tm.getAccentColor()));
+            bottomNav.setItemIconTintList(buildNavColorStateList(txt, tm.getAccentColor()));
+        }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (bottomNav.getSelectedItemId() != R.id.nav_home) {
+    private android.content.res.ColorStateList buildNavColorStateList(int unsel, int sel) {
+        int[][] states = new int[][]{ new int[]{android.R.attr.state_checked}, new int[]{} };
+        int[] colors   = new int[]{ sel, unsel };
+        return new android.content.res.ColorStateList(states, colors);
+    }
+
+    @Override public void onBackPressed() {
+        if (bottomNav != null && bottomNav.getSelectedItemId() != R.id.nav_home)
             bottomNav.setSelectedItemId(R.id.nav_home);
-        } else {
-            super.onBackPressed();
-        }
+        else super.onBackPressed();
     }
 }

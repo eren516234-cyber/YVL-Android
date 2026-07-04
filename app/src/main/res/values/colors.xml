@@ -6,4 +6,10 @@
     <color name="surface_dark">#1A1A1A</color>
     <color name="border">#222222</color>
     <color name="muted">#555555</color>
+    <!-- Theme accents -->
+    <color name="accent_void">#FFFFFF</color>
+    <color name="accent_purple">#9D4EDD</color>
+    <color name="accent_ocean">#0EA5E9</color>
+    <color name="accent_solar">#F97316</color>
+    <color name="accent_cyber">#10B981</color>
 </resources>
